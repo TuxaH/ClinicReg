@@ -1,0 +1,45 @@
+<div class="table">
+  <table>
+
+    <thead>
+      <tr>
+        <th class="doctor">Doctor</th>
+        <th class="position">Position</th>
+        <th class="records">Records</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let doctor of doctorsService.doctors | keyvalue">
+        <td class="text__center">
+          <div *ngFor="let docInfo of doctor.value | keyvalue">
+            {{ docInfo.value.lastName }} {{ docInfo.value.firstName }} {{ docInfo.value.patronymic }}
+          </div>
+        </td>
+        <td class="text__center">
+          <div *ngFor="let docInfo of doctor.value | keyvalue">
+            {{ docInfo.value.position }}
+          </div>
+        </td>
+        <td>
+          <div *ngFor="let docInfo of doctor.value | keyvalue">
+            <div *ngFor="let info of docInfo.value | keyvalue">
+              <div *ngFor="let day of info.value | keyvalue">
+                <span>{{ day.key }}</span>
+                <div *ngFor="let records of day.value | keyvalue">
+                  <div *ngFor="let timeKey of records.value | keyvalue">
+                    <div class="record" *ngFor="let time of timeKey.value | keyvalue">
+                      <span class="record__time">{{ time.key }} - {{ time.value }}</span>
+                      <i class="fas fa-trash-alt btn-delete" (click)="removeRecord(doctor.key, docInfo.key, day.key, time.key)"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

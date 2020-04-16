@@ -1,0 +1,24 @@
+<div class="box__inner">
+
+  <div class="form__group">
+
+    <div class="form__item">
+      <label for="position">Position</label>
+      <input id="position" type="text" placeholder="Position" required minlength="3" appOnlyWords="true" (keydown.enter)="addPosition()" [(ngModel)]="position" #pos='ngModel'>
+      <div class="alert" [hidden]="pos.valid || pos.pristine">Поле 'Position' должно иметь не менее 3х символов</div>
+    </div>
+
+    <div class="alert__user" *ngIf="checkPosition === true">Такая должность уже существует</div>
+    <div class="alert__user positive" *ngIf="checkPosition === false">Должность добавлена</div>
+
+    <button (click)="addPosition()" [disabled]="pos.invalid">Add</button>
+
+    <ul class="list__positions" *ngIf="positionsService.positions.length !== 0">
+      <li *ngFor="let pos of positionsService.positions">
+        <span>{{ pos }}</span><i class="fas fa-trash-alt btn-delete" (click)="removePosition(pos)"></i>
+      </li>
+    </ul>
+
+  </div>
+
+</div>

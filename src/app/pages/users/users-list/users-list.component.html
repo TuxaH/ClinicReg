@@ -1,0 +1,35 @@
+<div class="table">
+  <table>
+    <thead>
+    <tr>
+      <th>Login</th>
+      <th>Password</th>
+      <th>Type</th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let item of usersService.users | keyvalue">
+      <td class="text__center">
+        <div *ngFor="let k of item.value | keyvalue">
+          {{ k.value.login }}
+        </div>
+      </td>
+      <td class="text__center">
+        <div *ngFor="let k of item.value | keyvalue">
+          {{ k.value.password }}
+        </div>
+      </td>
+      <td class="text__center">
+        <div *ngFor="let k of item.value | keyvalue">
+          {{ k.value.type }}
+        </div>
+      </td>
+      <td class="text__center">
+        <i class="fas fa-trash-alt btn-delete" (click)="remove(item.key)"></i>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

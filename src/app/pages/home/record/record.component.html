@@ -1,0 +1,42 @@
+<div class="box__inner">
+
+  <div class="form__group">
+
+    <div class="form__item">
+      <label for="day">Day</label>
+      <input id="day" type="text" name="day" placeholder="Day" readonly required (keydown.enter)="addRecord()" [(ngModel)]="dd" #dayVar='ngModel'>
+      <div class="alert" [hidden]="dayVar.valid">Поле 'Day' не может быть пустым</div>
+    </div>
+
+    <div class="form__item">
+      <label for="doctor">Doctor</label>
+      <select id="doctor" name="doctor" required (change)="checkFreeTime(); checkRecord = false; selectTime = freeTime[0]" (keydown.enter)="addRecord()" [(ngModel)]="selectDocFam" #doctorVar='ngModel'>
+        <option *ngFor="let doc of doctorsService.doctors | keyvalue" [ngValue]="doc.key">
+          {{doc.key}}
+        </option>
+      </select>
+      <div class="alert" [hidden]="doctorVar.valid || doctorVar.pristine">Поле 'Doctor' не может быть пустым</div>
+    </div>
+
+    <div class="form__item">
+      <label for="time">Time</label>
+      <select name="time" id="time" required (change)="checkRecord = false;" (keydown.enter)="addRecord()" [(ngModel)]="selectTime" #timeVar='ngModel'>
+        <option *ngFor="let t of freeTime">
+          {{ t }}
+        </option>
+      </select>
+      <div class="alert" [hidden]="timeVar.valid || timeVar.pristine">Поле 'Time' не может быть пустым</div>
+    </div>
+
+    <div class="form__item">
+      <label for="patient">Patient</label>
+      <input id="patient" type="text" name="patient" placeholder="Patient" required minlength="3" appOnlyWords="true" (ngModelChange)="checkRecord = false" (keydown.enter)="addRecord()" [(ngModel)]="patient" #patientVar='ngModel'>
+      <div class="alert" [hidden]="patientVar.valid || patientVar.pristine">Поле 'Patient' должно иметь не менее 3х символов</div>
+    </div>
+
+    <div class="alert__user positive" *ngIf="checkRecord === true">Пациент записан</div>
+
+    <button (click)="addRecord()" [disabled]="dayVar.invalid || patientVar.invalid || timeVar.invalid">Record</button>
+  </div>
+
+</div>

@@ -1,0 +1,30 @@
+<nav>
+
+  <div class="nav__logo">
+    Clinic Reg
+  </div>
+
+  <div class="nav__bar">
+    <ng-container *ngIf="loginService.isLoggedIn()">
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+      <a routerLink="/doctors" routerLinkActive="active">Doctors</a>
+      <a *ngIf="loginService.cAdmin()" routerLink="/users" routerLinkActive="active">Users</a>
+
+      <div class="user">
+        <span class="user__info">Login - <b>{{ loginService.loginUser }}</b></span>
+        <span class="user__info">Type - <b>{{ loginService.userType }}</b></span>
+        <a class="u_logout" routerLink="/login" (click)="loginService.logout()">LogOut</a>
+      </div>
+
+    </ng-container>
+    <a *ngIf="!loginService.isLoggedIn()" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">LogIn</a>
+  </div>
+
+
+</nav>
+
+<div class="container">
+
+  <router-outlet></router-outlet>
+
+</div>

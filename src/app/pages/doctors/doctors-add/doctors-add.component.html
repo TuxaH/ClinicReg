@@ -1,0 +1,41 @@
+<div class="box__inner">
+
+  <div class="form__group">
+
+    <div class="form__item">
+      <label for="firstName">First name</label>
+      <input class="text" id="firstName" type="text" placeholder="First name" required minlength="3" appOnlyWords="true" (keydown.enter)="addNewDoctor(firstName, patronymic, lastName, position)" [(ngModel)]="firstName" #firstN='ngModel'>
+      <div class="alert" [hidden]="firstN.valid || firstN.pristine">Поле 'First name' должно иметь не менее 3х символов</div>
+    </div>
+
+    <div class="form__item">
+      <label for="patronymic">Patronymic</label>
+      <input class="text" id="patronymic" type="text" placeholder="Patronymic" required minlength="3" appOnlyWords="true" (keydown.enter)="addNewDoctor(firstName, patronymic, lastName, position)" [(ngModel)]="patronymic" #patr='ngModel'>
+      <div class="alert" [hidden]="patr.valid || patr.pristine">Поле 'Patronymic' должно иметь не менее 3х символов</div>
+    </div>
+
+    <div class="form__item">
+      <label for="lastName">Last name</label>
+      <input class="text" id="lastName" type="text" placeholder="Last name" required minlength="3" appOnlyWords="true" (keydown.enter)="addNewDoctor(firstName, patronymic, lastName, position)" [(ngModel)]="lastName" #lastN='ngModel'>
+      <div class="alert" [hidden]="lastN.valid || lastN.pristine">Поле 'Last name' должно иметь не менее 3х символов</div>
+    </div>
+
+    <div class="form__item">
+      <label>Position</label>
+      <select name="position" required [(ngModel)]="position" #posit='ngModel'>
+        <option *ngFor="let pos of positionsService.positions" [value]="pos">
+          {{ pos }}
+        </option>
+      </select>
+      <div class="alert" [hidden]="posit.valid || posit.pristine ">Вы должны выбрать Должность</div>
+    </div>
+
+    <div class="alert__user" *ngIf="checkDoc === false">Такой доктор уже существует</div>
+    <div class="alert__user positive" *ngIf="checkDoc === true">Доктор добавлен</div>
+
+    <button (click)="addNewDoctor(firstName, patronymic, lastName, position)" [disabled]="firstN.invalid || patr.invalid || lastN.invalid || posit.invalid">Add</button>
+
+  </div>
+
+</div>
+

@@ -1,0 +1,15 @@
+div {
+  margin: 200px auto 0;
+  width: 100%;
+  max-width: 1200px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-size: 7rem;
+  font-weight: 900;
+}

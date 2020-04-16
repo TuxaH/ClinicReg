@@ -1,0 +1,27 @@
+<div class="box__inner">
+
+  <div class="header__box__inner">
+    <h2>Authorisation</h2>
+  </div>
+
+  <div class="form__group">
+
+    <div class="form__item">
+      <label for="login">Login</label>
+      <input id="login" type="text" name="login" placeholder="Login" required minlength="3" (keydown.enter)="loginService.login(login, password)" [(ngModel)]="login" #userLogin='ngModel'>
+      <div class="alert" [hidden]="userLogin.valid || userLogin.pristine ">Поле 'Login' должно иметь не менее 3х символов</div>
+    </div>
+
+    <div class="form__item">
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" placeholder="Password" required (keydown.enter)="loginService.login(login, password)" [(ngModel)]="password" #userPassword='ngModel'>
+      <div class="alert" [hidden]="userPassword.valid || userPassword.pristine ">Поле 'Password' не должно быть пустым</div>
+    </div>
+
+    <div class="alert__user" *ngIf="loginService.checkUser==false">Такого пользователя нет</div>
+
+    <button (click)="loginService.login(login, password)" [disabled]="userLogin.invalid || userPassword.invalid">LogIn</button>
+
+  </div>
+
+</div>

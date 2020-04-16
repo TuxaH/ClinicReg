@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: .5rem 1rem;
+}
+
+td {
+  text-align: center;
+
+  transition: all .2s linear;
+}
+
+td.disabled {
+  opacity: .8;
+}
+
+td:hover:not(disabled) {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+td.selected {
+  color: blue;
+}
+
+td.active {
+  color: palevioletred;
+  font-weight: 900;
+}

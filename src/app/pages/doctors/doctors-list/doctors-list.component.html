@@ -1,0 +1,41 @@
+<div class="table">
+  <table>
+
+    <thead>
+    <th>Last name</th>
+    <th>First name</th>
+    <th>Patronymic</th>
+    <th>Position</th>
+    <th></th>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let item of doctorsService.doctors | keyvalue">
+      <td class="text__center">
+        <div *ngFor="let k of item.value | keyvalue">
+          {{ k.value.lastName | titlecase }}
+        </div>
+      </td>
+      <td class="text__center">
+        <div *ngFor="let k of item.value | keyvalue">
+          {{ k.value.firstName | titlecase }}
+        </div>
+      </td>
+      <td class="text__center">
+        <div *ngFor="let k of item.value | keyvalue">
+          {{ k.value.patronymic | titlecase }}
+        </div>
+      </td>
+      <td class="text__center">
+        <div *ngFor="let k of item.value | keyvalue">
+          {{ k.value.position | titlecase }}
+        </div>
+      </td>
+      <td class="text__center">
+        <i class="fas fa-trash-alt btn-delete" (click)="remove(item.key)"></i>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
