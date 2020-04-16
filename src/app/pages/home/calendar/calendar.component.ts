@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import * as moment from 'moment';
 import {DateService} from '../../../shared/services/date.service';
 import {RecordService} from '../../../shared/services/record.service';
+import {ModalWindowService} from '../../../shared/services/modal-window.service';
 
 interface Day {
   value: moment.Moment;
@@ -11,7 +12,7 @@ interface Day {
 }
 
 interface Week {
-  days: Day[]
+  days: Day[];
 }
 
 @Component({
@@ -29,7 +30,8 @@ export class CalendarComponent implements OnInit {
   @Output() prop = new EventEmitter<string>();
 
   constructor(private dateService: DateService,
-              private recordService: RecordService) { }
+              private recordService: RecordService,
+              public modalWindowService: ModalWindowService) { }
 
   ngOnInit(): void {
     this.dateService.date.subscribe(this.generate.bind(this))
@@ -64,19 +66,20 @@ export class CalendarComponent implements OnInit {
   }
 
   select(day: moment.Moment) {
+    const modal = document.querySelector('#modal__window');
+
     this.selectDate = day.format('DD-MM-YYYY');
 
     const sDay = day.format('MM DD, YYYY');
     const msDaySelect = Date.parse(sDay);
     const msDayNow = Date.parse(this.dayNow);
+
     if (msDayNow > msDaySelect) {
-      alert('ПРЕДУПРЕЖДЕНИЕ: Нельзя записывать на прошедшую дату!');
+      modal.classList.add('show');
+    } else {
+      this.dateService.changeDate(day);
+      this.recordService.selectDay = this.selectDate;
+      this.recordService.msDaySelect = msDaySelect;
     }
-
-    this.dateService.changeDate(day);
-    this.recordService.selectDay = this.selectDate;
-    this.recordService.msDaySelect = msDaySelect;
-    this.recordService.msDayNow = msDayNow;
   }
-
 }

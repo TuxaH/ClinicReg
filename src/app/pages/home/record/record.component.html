@@ -34,9 +34,15 @@
       <div class="alert" [hidden]="patientVar.valid || patientVar.pristine">Поле 'Patient' должно иметь не менее 3х символов</div>
     </div>
 
-    <div class="alert__user positive" *ngIf="checkRecord === true">Пациент записан</div>
-
     <button (click)="addRecord()" [disabled]="dayVar.invalid || patientVar.invalid || timeVar.invalid">Record</button>
   </div>
 
+</div>
+
+
+<div class="modal" id="modal__window">
+  <div class="modal__dialog">
+    <h4>Пациент записан</h4>
+    <button class="modal__close" type="button" (click)="modalWindowService.close()">Close</button>
+  </div>
 </div>

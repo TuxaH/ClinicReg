@@ -8,9 +8,6 @@
       <div class="alert" [hidden]="pos.valid || pos.pristine">Поле 'Position' должно иметь не менее 3х символов</div>
     </div>
 
-    <div class="alert__user" *ngIf="checkPosition === true">Такая должность уже существует</div>
-    <div class="alert__user positive" *ngIf="checkPosition === false">Должность добавлена</div>
-
     <button (click)="addPosition()" [disabled]="pos.invalid">Add</button>
 
     <ul class="list__positions" *ngIf="positionsService.positions.length !== 0">
@@ -21,4 +18,13 @@
 
   </div>
 
+</div>
+
+
+<div class="modal" id="modal__window">
+  <div class="modal__dialog">
+    <h4 *ngIf="checkPosition">Должность добавлена</h4>
+    <h4 *ngIf="!checkPosition" style="color: '#ff6438'">Такая должность уже есть</h4>
+    <button class="modal__close" type="button" (click)="modalWindowService.close()">Close</button>
+  </div>
 </div>

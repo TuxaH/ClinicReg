@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RecordService} from '../../../shared/services/record.service';
 import {DoctorsService} from '../../../shared/services/doctors.service';
+import {ModalWindowService} from '../../../shared/services/modal-window.service';
 
 @Component({
   selector: 'app-record',
@@ -21,7 +22,8 @@ export class RecordComponent implements OnInit {
   freeTime = [];
 
   constructor(public recordService: RecordService,
-              public doctorsService: DoctorsService) {}
+              public doctorsService: DoctorsService,
+              public modalWindowService: ModalWindowService) {}
 
   ngOnInit(): void {
     this.doctorsService.getDoctors();
@@ -30,16 +32,14 @@ export class RecordComponent implements OnInit {
   }
 
   addRecord() {
-    if (this.recordService.msDayNow > this.recordService.msDaySelect) {
-      alert('Нельзя записывать на прошедшую дату!');
-    } else {
-      this.recordService.addRecord(this.selectDocFam, this.dd, this.patient, this.selectTime);
+    const modal = document.querySelector('#modal__window');
 
-      this.checkRecord = true;
-      this.selectDocFam = '';
-      this.selectTime = '';
-      this.patient = '';
-    }
+    this.recordService.addRecord(this.selectDocFam, this.dd, this.patient, this.selectTime);
+
+    modal.classList.add('show');
+    this.selectDocFam = '';
+    this.selectTime = '';
+    this.patient = '';
   }
 
   checkFreeTime() {
@@ -78,9 +78,5 @@ export class RecordComponent implements OnInit {
     } else if (!busyTime.length) {
       this.freeTime = this.freeTime.concat(this.time);
     }
-
-    console.log('time - ', this.time);
-    console.log('busyTime - ', busyTime);
-    console.log('freeTime - ', this.freeTime);
   }
 }

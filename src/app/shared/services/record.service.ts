@@ -14,7 +14,6 @@ export class RecordService {
 
   selectDay: string;
   msDaySelect: number;
-  msDayNow: number;
 
   addRecord(doctor, day, patient, time) {
     const record = {[time]: patient};

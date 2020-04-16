@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DoctorsService} from '../../../shared/services/doctors.service';
 import {PositionsService} from '../../../shared/services/positions.service';
+import {ModalWindowService} from '../../../shared/services/modal-window.service';
 
 @Component({
   selector: 'app-doctors-add',
@@ -17,14 +18,15 @@ export class DoctorsAddComponent implements OnInit {
   checkDoc: boolean;
 
   constructor(private doctorsService: DoctorsService,
-              public positionsService: PositionsService) {}
+              public positionsService: PositionsService,
+              public modalWindowService: ModalWindowService) {}
 
   ngOnInit(): void {
     this.positionsService.getPositions();
   }
 
   addNewDoctor(fN, pat, lN, pos) {
-    this.doctorsService.getDoctors();
+    const modal = document.querySelector('#modal__window');
 
     this.checkDoc = true;
     const doc = {firstName: fN, patronymic: pat, lastName: lN, position: pos, records: {}};
@@ -37,12 +39,14 @@ export class DoctorsAddComponent implements OnInit {
       }
     }
 
-    if (this.checkDoc === true) {
-      this.doctorsService.createDoctor(doc).subscribe(null, err => console.error(err));
+    if (this.checkDoc) {
+      modal.classList.add('show');
+      this.doctorsService.createDoctor(doc).subscribe(() => this.doctorsService.getDoctors(), err => console.error(err));
       this.firstName = '';
       this.patronymic = '';
       this.lastName = '';
       this.position = '';
-    }
+    } else if (!this.checkDoc)
+      modal.classList.add('show');
   }
 }
