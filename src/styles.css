@@ -201,6 +201,10 @@ button[disabled] {
   overflow: hidden;
 }
 
+.login {
+  margin-top: 16rem;
+}
+
 .header__box__inner {
   background-color: rgba(224, 255, 104, .5);
 }
@@ -261,24 +265,6 @@ button[disabled] {
   font-size: 1.2rem;
 }
 
-.alert {
-  color: #ff6438;
-}
-
-.alert__user {
-  padding: 1rem 2rem;
-
-  color: #ff6438;
-  border: 1px solid #ff6438;
-  border-radius: 5px;
-}
-
-.alert__user.positive {
-  color: green;
-  font-weight: 600;
-  border: 2px solid green;
-}
-
 .ng-valid[required] {
   border-left: 5px solid green;
 }
@@ -303,7 +289,7 @@ button[disabled] {
 
   overflow: auto;
 
-  background: rgba(0, 0, 0, .9);
+  background: rgba(0, 0, 0, .8);
 }
 
 .modal.show {
@@ -336,5 +322,9 @@ button[disabled] {
 @media (max-width: 1400px) {
   .nav__page {
     margin-bottom: 1.5rem;
+  }
+
+  .login {
+    margin-top: 8rem;
   }
 }

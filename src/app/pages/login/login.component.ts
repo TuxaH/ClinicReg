@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {LoginService} from '../../shared/services/login.service';
+import {ModalWindowService} from '../../shared/services/modal-window.service';
 
 @Component({
   selector: 'app-login',
@@ -11,5 +12,6 @@ export class LoginComponent {
   login: string = '';
   password: string = '';
 
-  constructor(public loginService: LoginService) {}
+  constructor(public loginService: LoginService,
+              public modalWindowService: ModalWindowService) {}
 }

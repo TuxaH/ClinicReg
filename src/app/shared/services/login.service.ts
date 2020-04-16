@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {UsersService} from './users.service';
+import {ModalWindowService} from './modal-window.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,8 @@ export class LoginService {
   }
 
   login(login: string, password: string) {
+    const modal = document.querySelector('#modal__window');
+
     this.usersService.getUsers();
 
     this.checkUser = false;
@@ -33,7 +36,8 @@ export class LoginService {
               localStorage.setItem('user_type', this.usersService.users[prop][k].type);
               this.checkUser = true;
               this.router.navigate(['/', 'home']);
-            }
+            } else
+              modal.classList.add('show');
           }
         }
       }

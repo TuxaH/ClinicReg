@@ -1,4 +1,4 @@
-<div class="box__inner">
+<div class="box__inner login">
 
   <div class="header__box__inner">
     <h2>Authorisation</h2>
@@ -18,10 +18,17 @@
       <div class="alert" [hidden]="userPassword.valid || userPassword.pristine ">Поле 'Password' не должно быть пустым</div>
     </div>
 
-    <div class="alert__user" *ngIf="loginService.checkUser==false">Такого пользователя нет</div>
 
     <button (click)="loginService.login(login, password)" [disabled]="userLogin.invalid || userPassword.invalid">LogIn</button>
 
   </div>
 
+</div>
+
+
+<div class="modal" id="modal__window">
+  <div class="modal__dialog">
+    <h4 style="color: '#ff6438'">Такого пользователя нет</h4>
+    <button class="modal__close" type="button" (click)="modalWindowService.close()">Close</button>
+  </div>
 </div>
