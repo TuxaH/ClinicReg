@@ -13,7 +13,7 @@ html, body {
 }
 
 body {
-  background: #d4d6e2 url("src/images/background.jpg") center no-repeat fixed;
+  background: #d4d6e2 url("assets/images/background.jpg") center no-repeat fixed;
   background-size: cover;
 }
 
@@ -273,6 +273,9 @@ button[disabled] {
   border-left: 5px solid #c10000;
 }
 
+.alert {
+  color: #c10000;
+}
 
 /*modal windows*/
 .modal {
@@ -300,14 +303,17 @@ button[disabled] {
   margin: auto;
   padding: 2rem;
   width: 100%;
-  max-width: 600px;
+  max-width: 560px;
 
   position: relative;
+  top: -15rem;
 
   text-align: center;
 
+  /*overflow: hidden;*/
+
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .modal__dialog h4 {
@@ -316,6 +322,42 @@ button[disabled] {
   font-size: 2rem;
 }
 
+.modal__close {
+  padding: 0;
+  min-width: 0;
+  width: 0;
+  height: 0;
+
+  position: absolute;
+  top: -.8rem;
+  right: 3.5rem;
+  z-index: 1001;
+
+  background: none;
+  border: 0;
+  box-shadow: none;
+
+  cursor: pointer;
+}
+
+.modal__close:focus {
+  outline: none;
+}
+
+.modal__close img {
+  height: 40px;
+  width: 40px;
+
+  transition: transform .2s linear;
+}
+
+.modal__close img:hover {
+  transform: rotate(90deg);
+}
+
+.modal__close img:focus {
+  outline: none;
+}
 
 
 /*@media*/

@@ -41,7 +41,9 @@
   <div class="modal__dialog">
     <h4 *ngIf="checkDoc">Доктор добавлен</h4>
     <h4 *ngIf="!checkDoc" style="color: '#ff6438'">Такой доктор уже есть</h4>
-    <button class="modal__close" type="button" (click)="modalWindowService.close()">Close</button>
+    <button class="modal__close" type="button" (click)="modalWindowService.close()">
+      <img src="./assets/images/modal-close.svg" alt="Close">
+    </button>
   </div>
 </div>
 
