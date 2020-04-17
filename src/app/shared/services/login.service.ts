@@ -9,6 +9,7 @@ export class LoginService {
 
   checkUser: boolean = true;
   checkAdmin: boolean;
+  checkNormalUser: boolean;
   loginUser: string;
   userType: string;
 
@@ -48,7 +49,7 @@ export class LoginService {
     return !!localStorage.getItem('user_key');
   }
 
-  cAdmin() {
+  cUser() {
     for (let prop in this.usersService.users) {
       for (let k in this.usersService.users[prop]) {
         if (this.usersService.users[prop][k].login === localStorage.getItem('user_key')) {
@@ -56,6 +57,11 @@ export class LoginService {
             this.checkAdmin = true;
           } else if (this.usersService.users[prop][k].type !== 'admin') {
             this.checkAdmin = false;
+          }
+          if (this.usersService.users[prop][k].type === 'user') {
+            this.checkNormalUser = true;
+          } else if (this.usersService.users[prop][k].type !== 'user') {
+            this.checkNormalUser = false;
           }
         }
       }

@@ -8,7 +8,7 @@
     <ng-container *ngIf="loginService.isLoggedIn()">
       <a routerLink="/home" routerLinkActive="active">Home</a>
       <a routerLink="/doctors" routerLinkActive="active">Doctors</a>
-      <a *ngIf="loginService.cAdmin()" routerLink="/users" routerLinkActive="active">Users</a>
+      <a *ngIf="loginService.cUser()" routerLink="/users" routerLinkActive="active">Users</a>
 
       <div class="user">
         <span class="user__info">Login - <b>{{ loginService.loginUser }}</b></span>

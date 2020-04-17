@@ -8,13 +8,15 @@ import {RecordComponent} from './record/record.component';
 import {CalendarComponent} from './calendar/calendar.component';
 import {FormsModule} from '@angular/forms';
 import {DirectivesAndPipesModule} from '../../shared/modules/directives-and-pipes.module';
+import { MyRecordsComponent } from './my-records/my-records.component';
 
 @NgModule({
     declarations: [
       HomeComponent,
       SelectorComponent,
       RecordComponent,
-      CalendarComponent
+      CalendarComponent,
+      MyRecordsComponent
     ],
   imports: [
     CommonModule,

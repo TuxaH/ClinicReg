@@ -4,13 +4,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import {CalendarComponent} from './calendar/calendar.component';
 import {RecordComponent} from './record/record.component';
+import {MyRecordsComponent} from './my-records/my-records.component';
 
 const routes: Routes =
   [
     { path: '', component: HomeComponent, children: [
         { path: '', redirectTo: 'calendar', pathMatch: 'full' },
         { path: 'calendar', pathMatch: 'full', component: CalendarComponent },
-        { path: 'record', pathMatch: 'full', component: RecordComponent }
+        { path: 'record', pathMatch: 'full', component: RecordComponent },
+        { path: 'my-records', pathMatch: 'full', component: MyRecordsComponent }
       ] },
   ];
 

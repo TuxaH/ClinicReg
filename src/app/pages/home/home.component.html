@@ -1,6 +1,7 @@
 <div class="nav__page">
   <a routerLink="/home/calendar" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Calendar</a>
   <a routerLink="/home/record" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Record</a>
+  <a *ngIf="loginService.checkNormalUser" routerLink="/home/my-records" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">My records</a>
 </div>
 
 <router-outlet></router-outlet>

@@ -11,6 +11,6 @@ export class AdminGuard implements CanActivate {
               private router: Router) {}
 
   canActivate(): boolean | UrlTree {
-    return this.loginService.cAdmin() || this.router.createUrlTree(['/', 'home']);
+    return this.loginService.cUser() || this.router.createUrlTree(['/', 'home']);
   }
 }
