@@ -6,6 +6,7 @@ import { UsersComponent } from './users.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UsersAddComponent } from './users-add/users-add.component';
 import {FormsModule} from '@angular/forms';
+import {DirectivesAndPipesModule} from '../../shared/modules/directives-and-pipes.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {FormsModule} from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    DirectivesAndPipesModule
   ]
 })
 export class UsersModule { }

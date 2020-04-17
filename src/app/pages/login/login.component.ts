@@ -14,10 +14,12 @@ export class LoginComponent implements OnInit {
   login: string = '';
   password: string = '';
 
-  loginReg:string = '';
-  passwordReg:string = '';
+  nameFirstReg: string = '';
+  nameLastReg: string = '';
+  loginReg: string = '';
+  passwordReg: string = '';
 
-  checkUser: boolean = undefined;
+  checkUser = undefined;
 
   constructor(public loginService: LoginService,
               public modalWindowService: ModalWindowService,
@@ -34,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   registration() {
     this.checkUser = true;
-    const user: UserModel = {login: this.loginReg, password: this.passwordReg, type: 'user'};
+    const user: UserModel = {nameFirst: this.nameFirstReg, nameLast: this.nameLastReg, login: this.loginReg, password: this.passwordReg, type: 'user'};
 
     for (let prop in this.usersService.users) {
       if (prop === this.loginReg)
@@ -43,6 +45,8 @@ export class LoginComponent implements OnInit {
 
     if (this.checkUser) {
       this.usersService.createUser(user).subscribe(() => this.usersService.getUsers(), err => console.error(err));
+      this.nameFirstReg = '';
+      this.nameLastReg = '';
       this.loginReg = '';
       this.passwordReg = '';
     }

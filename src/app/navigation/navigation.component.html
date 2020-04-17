@@ -11,7 +11,7 @@
       <a *ngIf="loginService.cUser()" routerLink="/users" routerLinkActive="active">Users</a>
 
       <div class="user">
-        <span class="user__info">Login - <b>{{ loginService.loginUser }}</b></span>
+        <span class="user__info"><b>{{ loginService.nameFirst }} {{ loginService.nameLast }}</b></span>
         <span class="user__info">Type - <b>{{ loginService.userType }}</b></span>
         <a class="u_logout" routerLink="/login" (click)="loginService.logout()">LogOut</a>
       </div>

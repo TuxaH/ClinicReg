@@ -3,9 +3,21 @@
   <div class="form__group">
 
     <div class="form__item">
+      <label for="nameFirst">First name</label>
+      <input id="nameFirst" type="text" placeholder="First Name" required minlength="3" appOnlyWords="true" (keydown.enter)="createNewUser()" [(ngModel)]="nameFirst" #userNameFirst='ngModel'>
+      <div class="alert" [hidden]="userNameFirst.valid || userNameFirst.pristine">Поле 'First Name' должно иметь не менее 3х символов</div>
+    </div>
+
+    <div class="form__item">
+      <label for="nameLast">Last Name</label>
+      <input id="nameLast" type="text" placeholder="Last Name" required minlength="3" appOnlyWords="true" (keydown.enter)="createNewUser()" [(ngModel)]="nameLast" #userNameLast='ngModel'>
+      <div class="alert" [hidden]="userNameLast.valid || userNameLast.pristine">Поле 'Last Name' должно иметь не менее 3х символов</div>
+    </div>
+
+    <div class="form__item">
       <label for="login">Login</label>
       <input id="login" type="text" placeholder="Login" required minlength="3" (keydown.enter)="createNewUser()" [(ngModel)]="login" #userLogin='ngModel'>
-      <div class="alert" [hidden]="userLogin.valid || userLogin.pristine" #mes>Поле 'Login' должно иметь не менее 3х символов</div>
+      <div class="alert" [hidden]="userLogin.valid || userLogin.pristine">Поле 'Login' должно иметь не менее 3х символов</div>
     </div>
 
     <div class="form__item">
@@ -23,7 +35,7 @@
       </select>
     </div>
 
-    <button (click)="createNewUser()" [disabled]="userLogin.invalid || userPassword.invalid">Add</button>
+    <button (click)="createNewUser()" [disabled]="userLogin.invalid || userPassword.invalid || userNameFirst.invalid || userNameLast.invalid">Add</button>
 
   </div>
 

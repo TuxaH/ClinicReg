@@ -11,6 +11,8 @@ export class LoginService {
   checkAdmin: boolean;
   checkNormalUser: boolean;
   loginUser: string;
+  nameFirst: string;
+  nameLast: string;
   userType: string;
 
   constructor(private router: Router,
@@ -31,9 +33,13 @@ export class LoginService {
           for (let k in this.usersService.users[prop]) {
             if (this.usersService.users[prop][k].login === login && this.usersService.users[prop][k].password === password) {
               this.loginUser = this.usersService.users[prop][k].login;
+              this.nameFirst = this.usersService.users[prop][k].nameFirst;
+              this.nameLast = this.usersService.users[prop][k].nameLast;
               this.userType = this.usersService.users[prop][k].type;
               localStorage.setItem('user_key', this.usersService.users[prop][k].login);
               localStorage.setItem('user_type', this.usersService.users[prop][k].type);
+              localStorage.setItem('user_nameFirst', this.usersService.users[prop][k].nameFirst);
+              localStorage.setItem('user_nameLast', this.usersService.users[prop][k].nameLast);
               this.checkUser = true;
               this.router.navigate(['/', 'home']);
             } else {
@@ -75,6 +81,8 @@ export class LoginService {
   logout() {
     localStorage.removeItem('user_key');
     localStorage.removeItem('user_type');
+    localStorage.removeItem('user_nameFirst');
+    localStorage.removeItem('user_nameLast');
     this.router.navigate(['/', 'login']);
   }
 }

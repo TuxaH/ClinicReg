@@ -13,5 +13,7 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
     this.loginService.loginUser = localStorage.getItem('user_key');
     this.loginService.userType = localStorage.getItem('user_type');
+    this.loginService.nameFirst = localStorage.getItem('user_nameFirst');
+    this.loginService.nameLast = localStorage.getItem('user_nameLast');
   }
 }

@@ -42,6 +42,18 @@
     <h4>Registration</h4>
 
     <div class="form__item">
+      <label for="name__first__reg">First Name</label>
+      <input id="name__first__reg" type="text" name="nameFirst" placeholder="First Name" required minlength="3" appOnlyWords="true" (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" [(ngModel)]="nameFirstReg" #userNameFirstReg='ngModel'>
+      <div class="alert" [hidden]="userNameFirstReg.valid || userNameFirstReg.pristine ">Поле 'First Name' должно иметь не менее 3х символов</div>
+    </div>
+
+    <div class="form__item">
+      <label for="name__last__reg">Last Name</label>
+      <input id="name__last__reg" type="text" name="nameLast" placeholder="Last Name" required minlength="3" appOnlyWords="true" (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" [(ngModel)]="nameLastReg" #userNameLastReg='ngModel'>
+      <div class="alert" [hidden]="userNameLastReg.valid || userNameLastReg.pristine ">Поле 'Last Name' должно иметь не менее 3х символов</div>
+    </div>
+
+    <div class="form__item">
       <label for="login__reg">Login</label>
       <input id="login__reg" type="text" name="login" placeholder="Login" required minlength="3" (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" [(ngModel)]="loginReg" #userLoginReg='ngModel'>
       <div class="alert" [hidden]="userLoginReg.valid || userLoginReg.pristine ">Поле 'Login' должно иметь не менее 3х символов</div>
@@ -56,7 +68,7 @@
     <div class="alert__reg  positive" *ngIf="checkUser === true">Пользователь создан</div>
     <div class="alert__reg" *ngIf="checkUser === false">Такой пользователь есть</div>
 
-    <button (click)="registration()" [disabled]="userLoginReg.invalid || userPasswordReg.invalid">Registration</button>
+    <button (click)="registration()" [disabled]="userLoginReg.invalid || userPasswordReg.invalid || userNameFirstReg.invalid || userNameLastReg.invalid">Registration</button>
 
     <button class="modal__close" type="button" (click)="modalWindowService.closeReg()">
       <img src="./assets/images/modal-close.svg" alt="Close">
