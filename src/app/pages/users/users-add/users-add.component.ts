@@ -26,7 +26,7 @@ export class UsersAddComponent implements OnInit {
   }
 
   createNewUser() {
-    const modal = document.querySelector('#modal__window');
+    const modal = document.querySelector('.modal');
 
     this.checkUser = true;
     const user: UserModel = {login: this.login, password: this.password, type: this.type};

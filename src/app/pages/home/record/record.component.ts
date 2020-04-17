@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RecordService} from '../../../shared/services/record.service';
 import {DoctorsService} from '../../../shared/services/doctors.service';
 import {ModalWindowService} from '../../../shared/services/modal-window.service';
+import {LoginService} from '../../../shared/services/login.service';
 
 @Component({
   selector: 'app-record',
@@ -23,7 +24,8 @@ export class RecordComponent implements OnInit {
 
   constructor(public recordService: RecordService,
               public doctorsService: DoctorsService,
-              public modalWindowService: ModalWindowService) {}
+              public modalWindowService: ModalWindowService,
+              public loginService: LoginService) {}
 
   ngOnInit(): void {
     this.doctorsService.getDoctors();
@@ -32,7 +34,7 @@ export class RecordComponent implements OnInit {
   }
 
   addRecord() {
-    const modal = document.querySelector('#modal__window');
+    const modal = document.querySelector('.modal');
 
     this.recordService.addRecord(this.selectDocFam, this.dd, this.patient, this.selectTime);
 

@@ -20,7 +20,7 @@ export class DoctorsPositionsComponent implements OnInit {
   }
 
   addPosition() {
-    const modal = document.querySelector('#modal__window');
+    const modal = document.querySelector('.modal');
 
     const pos = {position: this.position};
     this.checkPosition = true;

@@ -18,8 +18,10 @@
       <div class="alert" [hidden]="userPassword.valid || userPassword.pristine ">Поле 'Password' не должно быть пустым</div>
     </div>
 
-
-    <button (click)="loginService.login(login, password)" [disabled]="userLogin.invalid || userPassword.invalid">LogIn</button>
+    <div class="btns">
+      <button (click)="loginService.login(login, password)" [disabled]="userLogin.invalid || userPassword.invalid">LogIn</button>
+      <button (click)="registrationModalWindow()">Registration</button>
+    </div>
 
   </div>
 
@@ -29,6 +31,34 @@
   <div class="modal__dialog">
     <h4 style="color: '#ff6438'">Такого пользователя нет</h4>
     <button class="modal__close" type="button" (click)="modalWindowService.close()">
+      <img src="./assets/images/modal-close.svg" alt="Close">
+    </button>
+  </div>
+</div>
+
+
+<div class="modal" id="modal__window__reg">
+  <div class="modal__dialog">
+    <h4>Registration</h4>
+
+    <div class="form__item">
+      <label for="login__reg">Login</label>
+      <input id="login__reg" type="text" name="login" placeholder="Login" required minlength="3" (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" [(ngModel)]="loginReg" #userLoginReg='ngModel'>
+      <div class="alert" [hidden]="userLoginReg.valid || userLoginReg.pristine ">Поле 'Login' должно иметь не менее 3х символов</div>
+    </div>
+
+    <div class="form__item">
+      <label for="password__reg">Password</label>
+      <input id="password__reg" type="password" name="password" placeholder="Password" required (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" [(ngModel)]="passwordReg" #userPasswordReg='ngModel'>
+      <div class="alert" [hidden]="userPasswordReg.valid || userPasswordReg.pristine ">Поле 'Password' не должно быть пустым</div>
+    </div>
+
+    <div class="alert__reg  positive" *ngIf="checkUser === true">Пользователь создан</div>
+    <div class="alert__reg" *ngIf="checkUser === false">Такой пользователь есть</div>
+
+    <button (click)="registration()" [disabled]="userLoginReg.invalid || userPasswordReg.invalid">Registration</button>
+
+    <button class="modal__close" type="button" (click)="modalWindowService.closeReg()">
       <img src="./assets/images/modal-close.svg" alt="Close">
     </button>
   </div>

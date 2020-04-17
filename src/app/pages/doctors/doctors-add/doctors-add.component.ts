@@ -26,7 +26,7 @@ export class DoctorsAddComponent implements OnInit {
   }
 
   addNewDoctor(fN, pat, lN, pos) {
-    const modal = document.querySelector('#modal__window');
+    const modal = document.querySelector('.modal');
 
     this.checkDoc = true;
     const doc = {firstName: fN, patronymic: pat, lastName: lN, position: pos, records: {}};

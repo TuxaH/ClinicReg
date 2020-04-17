@@ -6,7 +6,12 @@ import {Injectable} from '@angular/core';
 export class ModalWindowService {
 
   close() {
-    const modal = document.querySelector('#modal__window');
+    const modal = document.querySelector('.modal');
+    modal.classList.remove('show');
+  }
+
+  closeReg() {
+    const modal = document.querySelector('#modal__window__reg');
     modal.classList.remove('show');
   }
 }

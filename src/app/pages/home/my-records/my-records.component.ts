@@ -8,7 +8,7 @@ import {DoctorsService} from '../../../shared/services/doctors.service';
 })
 export class MyRecordsComponent implements OnInit {
 
-  constructor(private doctorsService: DoctorsService) {}
+  constructor(public doctorsService: DoctorsService) {}
 
   ngOnInit(): void {
   }

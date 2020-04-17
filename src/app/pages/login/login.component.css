@@ -1,1 +1,28 @@
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.btns button {
+  margin: 2rem 1rem 0;
+  padding: 1rem 0;
+  max-width: 200px;
+}
+
+.alert__reg {
+  margin: 1rem auto;
+  padding: 1rem;
+  max-width: 200px;
+
+  border-radius: 5px;
+  border: 2px solid #6d140f;
+
+  color: #6d140f;
+  font-weight: 700;
+}
+
+.alert__reg.positive {
+  border-color: green;
+  color: green;
+}

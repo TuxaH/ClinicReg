@@ -19,7 +19,7 @@ export class LoginService {
   }
 
   login(login: string, password: string) {
-    const modal = document.querySelector('#modal__window');
+    const modal = document.querySelector('.modal');
 
     this.usersService.getUsers();
 

@@ -66,7 +66,7 @@ export class CalendarComponent implements OnInit {
   }
 
   select(day: moment.Moment) {
-    const modal = document.querySelector('#modal__window');
+    const modal = document.querySelector('.modal');
 
     this.selectDate = day.format('DD-MM-YYYY');
 
