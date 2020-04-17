@@ -64,6 +64,19 @@ export class LoginService {
           } else if (this.usersService.users[prop][k].type !== 'admin') {
             this.checkAdmin = false;
           }
+        }
+      }
+    }
+    if (!this.checkAdmin)
+      return false;
+    else if (this.checkAdmin)
+      return true;
+  }
+
+  cNormalUser() {
+    for (let prop in this.usersService.users) {
+      for (let k in this.usersService.users[prop]) {
+        if (this.usersService.users[prop][k].login === localStorage.getItem('user_key')) {
           if (this.usersService.users[prop][k].type === 'user') {
             this.checkNormalUser = true;
           } else if (this.usersService.users[prop][k].type !== 'user') {
@@ -72,10 +85,10 @@ export class LoginService {
         }
       }
     }
-    if (!this.checkAdmin)
-      return false;
-    else if (this.checkAdmin)
+    if (this.checkNormalUser === false)
       return true;
+    else if (this.checkNormalUser === true)
+      return false;
   }
 
   logout() {

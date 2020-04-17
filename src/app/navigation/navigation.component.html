@@ -7,7 +7,7 @@
   <div class="nav__bar">
     <ng-container *ngIf="loginService.isLoggedIn()">
       <a routerLink="/home" routerLinkActive="active">Home</a>
-      <a routerLink="/doctors" routerLinkActive="active">Doctors</a>
+      <a *ngIf="loginService.cNormalUser()" routerLink="/doctors" routerLinkActive="active">Doctors</a>
       <a *ngIf="loginService.cUser()" routerLink="/users" routerLinkActive="active">Users</a>
 
       <div class="user">
