@@ -60,9 +60,9 @@ export class LoginService {
         }
       }
     }
-    if (this.checkAdmin === false)
+    if (!this.checkAdmin)
       return false;
-    else if (this.checkAdmin === true)
+    else if (this.checkAdmin)
       return true;
   }
 

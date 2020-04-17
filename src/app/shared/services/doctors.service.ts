@@ -10,7 +10,7 @@ export class DoctorsService {
 
   doctors;
 
-  static url: string = 'https://angular-organaizer.firebaseio.com';
+  static url: string = 'https://clinicreg-f7471.firebaseio.com';
 
   constructor(private http: HttpClient) {}
 

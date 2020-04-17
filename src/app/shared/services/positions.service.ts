@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class PositionsService {
 
-  static url: string = 'https://angular-organaizer.firebaseio.com';
+  static url: string = 'https://clinicreg-f7471.firebaseio.com';
   positionsObj = {};
   positions = [];
 
