@@ -31,6 +31,11 @@ export class RecordComponent implements OnInit {
     this.doctorsService.getDoctors();
     this.dd = this.recordService.selectDay;
     this.recordService.check = false;
+
+    setTimeout(() => {
+      if (this.loginService.checkNormalUser == true)
+        this.patient = localStorage.getItem('user_nameFirst') + " " + localStorage.getItem('user_nameLast');
+    }, 200);
   }
 
   addRecord() {
