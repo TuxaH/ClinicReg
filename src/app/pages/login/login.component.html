@@ -19,8 +19,8 @@
     </div>
 
     <div class="btns">
-      <button (click)="loginService.login(login, password)" [disabled]="userLogin.invalid || userPassword.invalid">LogIn</button>
-      <button (click)="registrationModalWindow()">Registration</button>
+      <button (click)="loginService.login(login, password); modalWindowService.focus($event, btnC)" [disabled]="userLogin.invalid || userPassword.invalid">LogIn</button>
+      <button (click)="registrationModalWindow(); modalWindowService.focus($event, reg)">Registration</button>
     </div>
 
   </div>
@@ -30,7 +30,7 @@
 <div class="modal" id="modal__window">
   <div class="modal__dialog">
     <h4 style="color: '#ff6438'">Такого пользователя нет</h4>
-    <button class="modal__close" type="button" (click)="modalWindowService.close()">
+    <button class="modal__close" type="button" (click)="modalWindowService.close()" (keydown.escape)="modalWindowService.close()" #btnC>
       <img src="./assets/images/modal-close.svg" alt="Close">
     </button>
   </div>
@@ -43,7 +43,7 @@
 
     <div class="form__item">
       <label for="name__first__reg">First Name</label>
-      <input id="name__first__reg" type="text" name="nameFirst" placeholder="First Name" required minlength="3" appOnlyWords="true" (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" (keydown.escape)="modalWindowService.closeReg()" [(ngModel)]="nameFirstReg" #userNameFirstReg='ngModel'>
+      <input id="name__first__reg" type="text" name="nameFirst" placeholder="First Name" required minlength="3" appOnlyWords="true" (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" (keydown.escape)="modalWindowService.closeReg()" [(ngModel)]="nameFirstReg" #userNameFirstReg='ngModel' #reg>
       <div class="alert" [hidden]="userNameFirstReg.valid || userNameFirstReg.pristine ">Поле 'First Name' должно иметь не менее 3х символов</div>
     </div>
 
@@ -68,7 +68,7 @@
     <div class="alert__reg  positive" *ngIf="checkUser === true">Пользователь создан</div>
     <div class="alert__reg" *ngIf="checkUser === false">Такой пользователь есть</div>
 
-    <button (click)="registration()" [disabled]="userLoginReg.invalid || userPasswordReg.invalid || userNameFirstReg.invalid || userNameLastReg.invalid">Registration</button>
+    <button (click)="registration()" (keydown.escape)="modalWindowService.closeReg()" [disabled]="userLoginReg.invalid || userPasswordReg.invalid || userNameFirstReg.invalid || userNameLastReg.invalid">Registration</button>
 
     <button class="modal__close" type="button" (click)="modalWindowService.closeReg()">
       <img src="./assets/images/modal-close.svg" alt="Close">

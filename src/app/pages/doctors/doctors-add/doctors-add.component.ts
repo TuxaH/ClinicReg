@@ -26,27 +26,29 @@ export class DoctorsAddComponent implements OnInit {
   }
 
   addNewDoctor(fN, pat, lN, pos) {
-    const modal = document.querySelector('.modal');
+    if (this.firstName.length >= 3 && this.patronymic.length >= 3 && this.lastName.length >= 3 && this.position !== '') {
+      const modal = document.querySelector('.modal');
 
-    this.checkDoc = true;
-    const doc = {firstName: fN, patronymic: pat, lastName: lN, position: pos, records: {}};
+      this.checkDoc = true;
+      const doc = {firstName: fN, patronymic: pat, lastName: lN, position: pos, records: {}};
 
-    for (let prop in this.doctorsService.doctors) {
-      for (let k in this.doctorsService.doctors[prop]) {
-        if (this.doctorsService.doctors[prop][k].firstName === fN && this.doctorsService.doctors[prop][k].patronymic === pat && this.doctorsService.doctors[prop][k].lastName === lN && this.doctorsService.doctors[prop][k].position === pos) {
-          this.checkDoc = false;
+      for (let prop in this.doctorsService.doctors) {
+        for (let k in this.doctorsService.doctors[prop]) {
+          if (this.doctorsService.doctors[prop][k].firstName === fN && this.doctorsService.doctors[prop][k].patronymic === pat && this.doctorsService.doctors[prop][k].lastName === lN && this.doctorsService.doctors[prop][k].position === pos) {
+            this.checkDoc = false;
+          }
         }
       }
-    }
 
-    if (this.checkDoc) {
-      modal.classList.add('show');
-      this.doctorsService.createDoctor(doc).subscribe(() => this.doctorsService.getDoctors(), err => console.error(err));
-      this.firstName = '';
-      this.patronymic = '';
-      this.lastName = '';
-      this.position = '';
-    } else if (!this.checkDoc)
-      modal.classList.add('show');
+      if (this.checkDoc) {
+        modal.classList.add('show');
+        this.doctorsService.createDoctor(doc).subscribe(() => this.doctorsService.getDoctors(), err => console.error(err));
+        this.firstName = '';
+        this.patronymic = '';
+        this.lastName = '';
+        this.position = '';
+      } else if (!this.checkDoc)
+        modal.classList.add('show');
+    }
   }
 }

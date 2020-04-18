@@ -32,10 +32,20 @@
         </div>
       </td>
       <td class="text__center">
-        <i class="fas fa-trash-alt btn-delete" (click)="remove(item.key)"></i>
+        <i class="fas fa-trash-alt btn-delete" (click)="modalWindowService.showModalConfirm(item.key); modalWindowService.focus($event, btnYes)"></i>
       </td>
     </tr>
     </tbody>
 
   </table>
+</div>
+
+<div class="modal" id="modal__window__confirm">
+  <div class="modal__dialog">
+    <h4>Delete doctor {{ modalWindowService.item }} ?</h4>
+    <button (click)="remove(modalWindowService.item)" (keydown.escape)="modalWindowService.closeConfirm()" #btnYes>Yes</button>
+    <button class="modal__close" type="button" (click)="modalWindowService.closeConfirm()">
+      <img src="./assets/images/modal-close.svg" alt="Close">
+    </button>
+  </div>
 </div>

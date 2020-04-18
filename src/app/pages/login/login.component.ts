@@ -35,20 +35,27 @@ export class LoginComponent implements OnInit {
   }
 
   registration() {
-    this.checkUser = true;
-    const user: UserModel = {nameFirst: this.nameFirstReg, nameLast: this.nameLastReg, login: this.loginReg, password: this.passwordReg, type: 'user'};
+    if (this.nameFirstReg.length >= 3 && this.nameLastReg.length >= 3 && this.loginReg.length >= 3 && this.passwordReg !== '') {
+      this.checkUser = true;
+      const user: UserModel = {
+        nameFirst: this.nameFirstReg,
+        nameLast: this.nameLastReg,
+        login: this.loginReg,
+        password: this.passwordReg,
+        type: 'user'};
 
-    for (let prop in this.usersService.users) {
-      if (prop === this.loginReg)
-        this.checkUser = false;
-    }
+      for (let prop in this.usersService.users) {
+        if (prop === this.loginReg)
+          this.checkUser = false;
+      }
 
-    if (this.checkUser) {
-      this.usersService.createUser(user).subscribe(() => this.usersService.getUsers(), err => console.error(err));
-      this.nameFirstReg = '';
-      this.nameLastReg = '';
-      this.loginReg = '';
-      this.passwordReg = '';
+      if (this.checkUser) {
+        this.usersService.createUser(user).subscribe(() => this.usersService.getUsers(), err => console.error(err));
+        this.nameFirstReg = '';
+        this.nameLastReg = '';
+        this.loginReg = '';
+        this.passwordReg = '';
+      }
     }
   }
 }

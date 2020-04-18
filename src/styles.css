@@ -156,6 +156,10 @@ button {
   transition: background .2s linear;
 }
 
+button:focus {
+  outline: none;
+}
+
 button:hover {
   background-color: #004300;
 }

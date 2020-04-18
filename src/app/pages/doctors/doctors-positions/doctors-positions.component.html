@@ -8,11 +8,11 @@
       <div class="alert" [hidden]="pos.valid || pos.pristine">Поле 'Position' должно иметь не менее 3х символов</div>
     </div>
 
-    <button (click)="addPosition()" [disabled]="pos.invalid">Add</button>
+    <button (click)="addPosition(); modalWindowService.focus($event, btnClose)" [disabled]="pos.invalid">Add</button>
 
     <ul class="list__positions" *ngIf="positionsService.positions.length !== 0">
       <li *ngFor="let item of positionsService.positions">
-        <span>{{ item }}</span><i class="fas fa-trash-alt btn-delete" (click)="modalWindowService.showModalConfirm(item)"></i>
+        <span>{{ item }}</span><i class="fas fa-trash-alt btn-delete" (click)="modalWindowService.showModalConfirm(item); modalWindowService.focus($event, btnYes)"></i>
       </li>
     </ul>
 
@@ -24,7 +24,7 @@
   <div class="modal__dialog">
     <h4 *ngIf="checkPosition">Должность добавлена</h4>
     <h4 *ngIf="!checkPosition" style="color: '#ff6438'">Такая должность уже есть</h4>
-    <button class="modal__close" type="button" (click)="modalWindowService.close()">
+    <button class="modal__close" type="button" (click)="modalWindowService.close()" (keydown.escape)="modalWindowService.close()" #btnClose>
       <img src="./assets/images/modal-close.svg" alt="Close">
     </button>
   </div>
@@ -33,7 +33,7 @@
 <div class="modal" id="modal__window__confirm">
   <div class="modal__dialog">
     <h4>Delete position {{ modalWindowService.item }} ?</h4>
-    <button (click)="removePosition(modalWindowService.item)">Yes</button>
+    <button (click)="removePosition(modalWindowService.item)" (keydown.escape)="modalWindowService.closeConfirm()" #btnYes>Yes</button>
     <button class="modal__close" type="button" (click)="modalWindowService.closeConfirm()">
       <img src="./assets/images/modal-close.svg" alt="Close">
     </button>

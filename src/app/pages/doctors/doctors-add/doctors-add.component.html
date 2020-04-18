@@ -22,7 +22,7 @@
 
     <div class="form__item">
       <label>Position</label>
-      <select name="position" required [(ngModel)]="position" #posit='ngModel'>
+      <select name="position" required (keydown.enter)="addNewDoctor(firstName, patronymic, lastName, position)" [(ngModel)]="position" #posit='ngModel'>
         <option *ngFor="let pos of positionsService.positions" [value]="pos">
           {{ pos }}
         </option>
@@ -30,7 +30,7 @@
       <div class="alert" [hidden]="posit.valid || posit.pristine ">Вы должны выбрать Должность</div>
     </div>
 
-    <button (click)="addNewDoctor(firstName, patronymic, lastName, position)" [disabled]="firstN.invalid || patr.invalid || lastN.invalid || posit.invalid">Add</button>
+    <button (click)="addNewDoctor(firstName, patronymic, lastName, position); modalWindowService.focus($event, btnClose)" [disabled]="firstN.invalid || patr.invalid || lastN.invalid || posit.invalid">Add</button>
 
   </div>
 
@@ -41,7 +41,7 @@
   <div class="modal__dialog">
     <h4 *ngIf="checkDoc">Доктор добавлен</h4>
     <h4 *ngIf="!checkDoc" style="color: '#ff6438'">Такой доктор уже есть</h4>
-    <button class="modal__close" type="button" (click)="modalWindowService.close()">
+    <button class="modal__close" type="button" (click)="modalWindowService.close()" (keydown.escape)="modalWindowService.close()" #btnClose>
       <img src="./assets/images/modal-close.svg" alt="Close">
     </button>
   </div>

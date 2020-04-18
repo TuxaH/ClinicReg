@@ -30,7 +30,7 @@
                   <div *ngFor="let timeKey of records.value | keyvalue">
                     <div class="record" *ngFor="let time of timeKey.value | keyvalue">
                       <span class="record__time">{{ time.key }} - {{ time.value }}</span>
-                      <i class="fas fa-trash-alt btn-delete" (click)="modalWindowService.showModalConfirm(doctor, doctor.key, docInfo.key, day.key, time.key)"></i>
+                      <i class="fas fa-trash-alt btn-delete" (click)="modalWindowService.showModalConfirm(doctor, doctor.key, docInfo.key, day.key, time.key); modalWindowService.focus($event, btnYes)"></i>
                     </div>
                   </div>
                 </div>
@@ -47,7 +47,7 @@
 <div class="modal" id="modal__window__confirm">
   <div class="modal__dialog">
     <h4>Delete record {{ modalWindowService.doctor }} ({{ modalWindowService.day }} - {{ modalWindowService.time }}) ?</h4>
-    <button (click)="removeRecord(modalWindowService.doctor, modalWindowService.docKey, modalWindowService.day, modalWindowService.time)">Yes</button>
+    <button (click)="removeRecord(modalWindowService.doctor, modalWindowService.docKey, modalWindowService.day, modalWindowService.time)" (keydown.escape)="modalWindowService.closeConfirm()" #btnYes>Yes</button>
     <button class="modal__close" type="button" (click)="modalWindowService.closeConfirm()">
       <img src="./assets/images/modal-close.svg" alt="Close">
     </button>

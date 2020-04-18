@@ -17,7 +17,7 @@
 
     <tbody>
     <tr *ngFor="let week of calendar">
-      <td *ngFor="let day of week.days" (click)="select(day.value)" [class.disabled]="day.disabled" [class.selected]="day.selected" [class.active]="day.active">
+      <td *ngFor="let day of week.days" (click)="select(day.value); modalWindowService.focus($event, btnClose)" [class.disabled]="day.disabled" [class.selected]="day.selected" [class.active]="day.active">
         {{ day.value | moment: 'DD' }}
       </td>
     </tr>
@@ -31,7 +31,7 @@
 <div class="modal" id="modal__window">
   <div class="modal__dialog">
     <h4>Нельзя записывать на прошедшую дату !</h4>
-    <button class="modal__close" type="button" (click)="modalWindowService.close()">
+    <button class="modal__close" type="button" (click)="modalWindowService.close()" (keydown.escape)="modalWindowService.close()" #btnClose>
       <img src="./assets/images/modal-close.svg" alt="Close">
     </button>
   </div>

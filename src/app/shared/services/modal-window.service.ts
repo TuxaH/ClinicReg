@@ -35,4 +35,8 @@ export class ModalWindowService {
     const modal = document.querySelector('#modal__window__confirm');
     modal.classList.remove('show');
   }
+
+  focus(e, el) {
+    el.focus();
+  }
 }

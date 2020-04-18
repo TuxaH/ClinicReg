@@ -19,7 +19,6 @@ export class RecordComponent implements OnInit {
   checkRecord: boolean = false;
   flagFreeTime: boolean = false;
 
-
   time = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00'];
   freeTime = [];
 
@@ -42,14 +41,15 @@ export class RecordComponent implements OnInit {
   }
 
   addRecord() {
-    const modal = document.querySelector('.modal');
+    if (this.dd !== '' && this.selectDocFam !== '' && this.selectTime !== '' && this.patient.length >= 3) {
+      const modal = document.querySelector('.modal');
 
-    this.recordService.addRecord(this.selectDocFam, this.dd, this.patient, this.selectTime);
+      this.recordService.addRecord(this.selectDocFam, this.dd, this.patient, this.selectTime);
 
-    modal.classList.add('show');
-    this.selectDocFam = '';
-    this.selectTime = '';
-    this.patient = '';
+      modal.classList.add('show');
+      this.selectDocFam = '';
+      this.selectTime = '';
+    }
   }
 
   checkFreeTime() {
