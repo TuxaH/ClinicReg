@@ -29,8 +29,8 @@
               <div *ngFor="let records of day.value | keyvalue">
                 <div *ngFor="let timeKey of records.value | keyvalue">
                   <div class="record" *ngFor="let time of timeKey.value | keyvalue">
-                    <span class="record__time">{{ time.key }} - {{ time.value }}</span>
-<!--                    <i class="fas fa-trash-alt btn-delete" (click)="removeRecord(doctor.key, docInfo.key, day.key, time.key)"></i>-->
+                    <span class="record__time" *ngIf="name === time.value" class="record__time">{{ time.key }} - {{ time.value }}</span>
+                      <i *ngIf="name === time.value" class="fas fa-trash-alt btn-delete" (click)="removeRecord(doctor.key, docInfo.key, day.key, time.key)"></i>
                   </div>
                 </div>
               </div>

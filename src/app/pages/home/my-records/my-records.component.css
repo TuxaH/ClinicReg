@@ -1,0 +1,36 @@
+span {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.doctor {
+  width: 40%;
+}
+
+.position {
+  width: 25%;
+}
+
+.records {
+  width: 35%;
+}
+
+.record {
+  margin-top: .3rem;
+  padding-right: 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.record__time {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+i {
+  margin-left: .5rem;
+
+  font-size: 1.1rem;
+}
