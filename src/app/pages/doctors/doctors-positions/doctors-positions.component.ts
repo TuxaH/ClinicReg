@@ -40,11 +40,8 @@ export class DoctorsPositionsComponent implements OnInit {
       modal.classList.add('show');
   }
 
-  removePosition(pos) {
-    const rem = confirm(`Delete position ${pos} ?`);
-    if (rem) {
-      this.positionsService.removePosition(pos).subscribe(() => this.positionsService.getPositions(), err => console.error(err));
-    }
+  removePosition(item) {
+    this.positionsService.removePosition(item).subscribe(() => this.positionsService.getPositions(), err => console.error(err));
+    this.modalWindowService.closeConfirm();
   }
-
 }

@@ -43,25 +43,25 @@
 
     <div class="form__item">
       <label for="name__first__reg">First Name</label>
-      <input id="name__first__reg" type="text" name="nameFirst" placeholder="First Name" required minlength="3" appOnlyWords="true" (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" [(ngModel)]="nameFirstReg" #userNameFirstReg='ngModel'>
+      <input id="name__first__reg" type="text" name="nameFirst" placeholder="First Name" required minlength="3" appOnlyWords="true" (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" (keydown.escape)="modalWindowService.closeReg()" [(ngModel)]="nameFirstReg" #userNameFirstReg='ngModel'>
       <div class="alert" [hidden]="userNameFirstReg.valid || userNameFirstReg.pristine ">Поле 'First Name' должно иметь не менее 3х символов</div>
     </div>
 
     <div class="form__item">
       <label for="name__last__reg">Last Name</label>
-      <input id="name__last__reg" type="text" name="nameLast" placeholder="Last Name" required minlength="3" appOnlyWords="true" (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" [(ngModel)]="nameLastReg" #userNameLastReg='ngModel'>
+      <input id="name__last__reg" type="text" name="nameLast" placeholder="Last Name" required minlength="3" appOnlyWords="true" (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" (keydown.escape)="modalWindowService.closeReg()" [(ngModel)]="nameLastReg" #userNameLastReg='ngModel'>
       <div class="alert" [hidden]="userNameLastReg.valid || userNameLastReg.pristine ">Поле 'Last Name' должно иметь не менее 3х символов</div>
     </div>
 
     <div class="form__item">
       <label for="login__reg">Login</label>
-      <input id="login__reg" type="text" name="login" placeholder="Login" required minlength="3" (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" [(ngModel)]="loginReg" #userLoginReg='ngModel'>
+      <input id="login__reg" type="text" name="login" placeholder="Login" required minlength="3" (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" (keydown.escape)="modalWindowService.closeReg()" [(ngModel)]="loginReg" #userLoginReg='ngModel'>
       <div class="alert" [hidden]="userLoginReg.valid || userLoginReg.pristine ">Поле 'Login' должно иметь не менее 3х символов</div>
     </div>
 
     <div class="form__item">
       <label for="password__reg">Password</label>
-      <input id="password__reg" type="password" name="password" placeholder="Password" required (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" [(ngModel)]="passwordReg" #userPasswordReg='ngModel'>
+      <input id="password__reg" type="password" name="password" placeholder="Password" required (ngModelChange)="checkUser = 'undefined'" (keydown.enter)="registration()" (keydown.escape)="modalWindowService.closeReg()" [(ngModel)]="passwordReg" #userPasswordReg='ngModel'>
       <div class="alert" [hidden]="userPasswordReg.valid || userPasswordReg.pristine ">Поле 'Password' не должно быть пустым</div>
     </div>
 

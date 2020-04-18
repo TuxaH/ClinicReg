@@ -11,8 +11,8 @@
     <button (click)="addPosition()" [disabled]="pos.invalid">Add</button>
 
     <ul class="list__positions" *ngIf="positionsService.positions.length !== 0">
-      <li *ngFor="let pos of positionsService.positions">
-        <span>{{ pos }}</span><i class="fas fa-trash-alt btn-delete" (click)="removePosition(pos)"></i>
+      <li *ngFor="let item of positionsService.positions">
+        <span>{{ item }}</span><i class="fas fa-trash-alt btn-delete" (click)="modalWindowService.showModalConfirm(item)"></i>
       </li>
     </ul>
 
@@ -29,3 +29,14 @@
     </button>
   </div>
 </div>
+
+<div class="modal" id="modal__window__confirm">
+  <div class="modal__dialog">
+    <h4>Delete position {{ modalWindowService.item }} ?</h4>
+    <button (click)="removePosition(modalWindowService.item)">Yes</button>
+    <button class="modal__close" type="button" (click)="modalWindowService.closeConfirm()">
+      <img src="./assets/images/modal-close.svg" alt="Close">
+    </button>
+  </div>
+</div>
+

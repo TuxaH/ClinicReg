@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DoctorsService} from '../../../shared/services/doctors.service';
+import {ModalWindowService} from '../../../shared/services/modal-window.service';
 
 @Component({
   selector: 'app-doctors-list-records',
@@ -8,17 +9,15 @@ import {DoctorsService} from '../../../shared/services/doctors.service';
 })
 export class DoctorsListRecordsComponent implements OnInit {
 
-  constructor(public doctorsService: DoctorsService) {}
+  constructor(public doctorsService: DoctorsService,
+              public modalWindowService: ModalWindowService) {}
 
   ngOnInit(): void {
     this.doctorsService.getDoctors();
   }
 
   removeRecord(doctor, docKey, day, time) {
-    const rem = confirm(`Delete record ${doctor} (${day} - ${time}) ?`);
-
-    if (rem) {
-      this.doctorsService.removeRecord(doctor, docKey, day, time).subscribe(() => this.doctorsService.getDoctors(), err => console.error(err));
-    }
+    this.doctorsService.removeRecord(doctor, docKey, day, time).subscribe(() => this.doctorsService.getDoctors(), err => console.error(err));
+    this.modalWindowService.closeConfirm();
   }
 }
