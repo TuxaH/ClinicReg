@@ -11,6 +11,6 @@ export class MyRecordsComponent implements OnInit {
   constructor(public doctorsService: DoctorsService) {}
 
   ngOnInit(): void {
+    this.doctorsService.getDoctors();
   }
-
 }

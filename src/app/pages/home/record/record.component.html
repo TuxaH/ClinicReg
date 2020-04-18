@@ -30,7 +30,7 @@
 
     <div class="form__item">
       <label for="patient">Patient</label>
-      <input id="patient" type="text" name="patient" placeholder="Patient" required minlength="3" appOnlyWords="true" (ngModelChange)="checkRecord = false" (keydown.enter)="addRecord()" [(ngModel)]="patient" #patientVar='ngModel'>
+      <input id="patient" type="text" name="patient" placeholder="Patient" required minlength="3" appOnlyWords="true" [readOnly]="loginService.checkNormalUser" (ngModelChange)="checkRecord = false" (keydown.enter)="addRecord()" [(ngModel)]="patient" #patientVar='ngModel'>
       <div class="alert" [hidden]="patientVar.valid || patientVar.pristine">Поле 'Patient' должно иметь не менее 3х символов</div>
     </div>
 

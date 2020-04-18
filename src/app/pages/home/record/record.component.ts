@@ -19,6 +19,7 @@ export class RecordComponent implements OnInit {
   checkRecord: boolean = false;
   flagFreeTime: boolean = false;
 
+
   time = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00'];
   freeTime = [];
 
@@ -32,8 +33,10 @@ export class RecordComponent implements OnInit {
     this.dd = this.recordService.selectDay;
     this.recordService.check = false;
 
+    if (this.loginService.checkNormalUser)
+      this.patient = localStorage.getItem('user_nameFirst') + " " + localStorage.getItem('user_nameLast');
     setTimeout(() => {
-      if (this.loginService.checkNormalUser == true)
+      if (this.loginService.checkNormalUser)
         this.patient = localStorage.getItem('user_nameFirst') + " " + localStorage.getItem('user_nameLast');
     }, 200);
   }

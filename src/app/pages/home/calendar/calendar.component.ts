@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import {DateService} from '../../../shared/services/date.service';
 import {RecordService} from '../../../shared/services/record.service';
 import {ModalWindowService} from '../../../shared/services/modal-window.service';
+import {LoginService} from '../../../shared/services/login.service';
 
 interface Day {
   value: moment.Moment;
@@ -27,11 +28,12 @@ export class CalendarComponent implements OnInit {
   selectDate = moment().format('DD-MM-YYYY');
   dayNow = moment().format('MM DD, YYYY');
 
-  @Output() prop = new EventEmitter<string>();
+  // @Output() prop = new EventEmitter<string>();
 
   constructor(private dateService: DateService,
               private recordService: RecordService,
-              public modalWindowService: ModalWindowService) { }
+              public modalWindowService: ModalWindowService,
+              private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.dateService.date.subscribe(this.generate.bind(this))
@@ -80,6 +82,8 @@ export class CalendarComponent implements OnInit {
       this.dateService.changeDate(day);
       this.recordService.selectDay = this.selectDate;
       this.recordService.msDaySelect = msDaySelect;
+
+      this.loginService.checkNormalUser = true;
     }
   }
 }
