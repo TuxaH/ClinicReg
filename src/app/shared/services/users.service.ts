@@ -8,7 +8,7 @@ import {UserModel} from '../models/users.model';
 })
 export class UsersService {
 
-  users;
+  users = {};
 
   static url: string = 'https://clinicreg-f7471.firebaseio.com';
 
@@ -23,8 +23,8 @@ export class UsersService {
       .post<any>(`${UsersService.url}/users/${user.login}.json`, user)
   }
 
-  removeUser(user): Observable<void> {
+  removeUser(user: UserModel): Observable<UserModel> {
     return this.http
-      .delete<void>(`${UsersService.url}/users/${user}.json`);
+      .delete<UserModel>(`${UsersService.url}/users/${user}.json`);
   }
 }

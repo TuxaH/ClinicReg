@@ -14,7 +14,7 @@ nav {
   text-transform: uppercase;
 
   font-size: 3.5rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .nav__bar {
@@ -62,7 +62,7 @@ nav {
 
 .user__info {
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #000;
 }
 

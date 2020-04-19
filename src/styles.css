@@ -63,7 +63,7 @@ Page Navigation
   margin: 0 1rem;
 
   font-size: 1.7rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 
@@ -246,7 +246,7 @@ button[disabled] {
 
   font-size: 1.1rem;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .form__item input {
