@@ -91,6 +91,14 @@ export class LoginService {
       return false;
   }
 
+  check() {
+    const userType = localStorage.getItem('user_type');
+    if (userType === 'user')
+      return true
+    else if (userType !== 'user')
+      return false
+  }
+
   logout() {
     localStorage.removeItem('user_key');
     localStorage.removeItem('user_type');

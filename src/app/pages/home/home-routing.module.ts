@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import {CalendarComponent} from './calendar/calendar.component';
 import {RecordComponent} from './record/record.component';
 import {MyRecordsComponent} from './my-records/my-records.component';
+import {MyRecordsGuard} from '../../shared/guards/my-records.guard';
 
 const routes: Routes =
   [
@@ -12,7 +13,7 @@ const routes: Routes =
         { path: '', redirectTo: 'calendar', pathMatch: 'full' },
         { path: 'calendar', pathMatch: 'full', component: CalendarComponent },
         { path: 'record', pathMatch: 'full', component: RecordComponent },
-        { path: 'my-records', pathMatch: 'full', component: MyRecordsComponent }
+        { path: 'my-records', pathMatch: 'full', component: MyRecordsComponent, canActivate: [MyRecordsGuard] }
       ] },
   ];
 
