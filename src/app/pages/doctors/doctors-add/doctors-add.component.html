@@ -5,19 +5,19 @@
     <div class="form__item">
       <label for="firstName">First name</label>
       <input class="text" id="firstName" type="text" placeholder="First name" required minlength="3" appOnlyWords="true" (keydown.enter)="addNewDoctor(firstName, patronymic, lastName, position)" [(ngModel)]="firstName" #firstN='ngModel'>
-      <div class="alert" [hidden]="firstN.valid || firstN.pristine">Поле 'First name' должно иметь не менее 3х символов</div>
+      <div class="alert" [hidden]="firstN.valid || firstN.pristine">Field 'First name' must have more than 3 characters</div>
     </div>
 
     <div class="form__item">
       <label for="patronymic">Patronymic</label>
       <input class="text" id="patronymic" type="text" placeholder="Patronymic" required minlength="3" appOnlyWords="true" (keydown.enter)="addNewDoctor(firstName, patronymic, lastName, position)" [(ngModel)]="patronymic" #patr='ngModel'>
-      <div class="alert" [hidden]="patr.valid || patr.pristine">Поле 'Patronymic' должно иметь не менее 3х символов</div>
+      <div class="alert" [hidden]="patr.valid || patr.pristine">Field 'Patronymic' must have more than 3 characters</div>
     </div>
 
     <div class="form__item">
       <label for="lastName">Last name</label>
       <input class="text" id="lastName" type="text" placeholder="Last name" required minlength="3" appOnlyWords="true" (keydown.enter)="addNewDoctor(firstName, patronymic, lastName, position)" [(ngModel)]="lastName" #lastN='ngModel'>
-      <div class="alert" [hidden]="lastN.valid || lastN.pristine">Поле 'Last name' должно иметь не менее 3х символов</div>
+      <div class="alert" [hidden]="lastN.valid || lastN.pristine">Field 'Last name' must have more than 3 characters</div>
     </div>
 
     <div class="form__item">
@@ -27,7 +27,7 @@
           {{ pos }}
         </option>
       </select>
-      <div class="alert" [hidden]="posit.valid || posit.pristine ">Вы должны выбрать Должность</div>
+      <div class="alert" [hidden]="posit.valid || posit.pristine ">You must choose a 'Position'</div>
     </div>
 
     <button (click)="addNewDoctor(firstName, patronymic, lastName, position); modalWindowService.focus($event, btnClose)" [disabled]="firstN.invalid || patr.invalid || lastN.invalid || posit.invalid">Add</button>
@@ -39,8 +39,8 @@
 
 <div class="modal" id="modal__window">
   <div class="modal__dialog">
-    <h4 *ngIf="checkDoc">Доктор добавлен</h4>
-    <h4 *ngIf="!checkDoc" style="color: '#ff6438'">Такой доктор уже есть</h4>
+    <h4 *ngIf="checkDoc">Doctor added</h4>
+    <h4 *ngIf="!checkDoc" style="color: '#ff6438'">This doctor already exists</h4>
     <button class="modal__close" type="button" (click)="modalWindowService.close()" (keydown.escape)="modalWindowService.close()" #btnClose>
       <img src="./assets/images/modal-close.svg" alt="Close">
     </button>
