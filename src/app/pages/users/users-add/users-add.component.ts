@@ -5,8 +5,7 @@ import {ModalWindowService} from '../../../shared/services/modal-window.service'
 
 @Component({
   selector: 'app-users-add',
-  templateUrl: './users-add.component.html',
-  styleUrls: ['./users-add.component.css']
+  templateUrl: './users-add.component.html'
 })
 export class UsersAddComponent implements OnInit {
 

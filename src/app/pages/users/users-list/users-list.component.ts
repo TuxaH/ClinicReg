@@ -4,8 +4,7 @@ import {ModalWindowService} from '../../../shared/services/modal-window.service'
 
 @Component({
   selector: 'app-users-list',
-  templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  templateUrl: './users-list.component.html'
 })
 export class UsersListComponent implements OnInit {
 

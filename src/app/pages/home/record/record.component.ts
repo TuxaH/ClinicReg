@@ -6,8 +6,7 @@ import {LoginService} from '../../../shared/services/login.service';
 
 @Component({
   selector: 'app-record',
-  templateUrl: './record.component.html',
-  styleUrls: ['./record.component.css']
+  templateUrl: './record.component.html'
 })
 export class RecordComponent implements OnInit {
 

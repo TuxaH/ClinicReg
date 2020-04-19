@@ -3,8 +3,12 @@ import {LoginService} from '../../shared/services/login.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  template: `<div class="nav__page">
+               <a routerLink="/home/calendar" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Calendar</a>
+               <a routerLink="/home/record" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Record</a>
+               <a *ngIf="loginService.checkNormalUser" routerLink="/home/my-records" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">My records</a>
+             </div>
+             <router-outlet></router-outlet>`
 })
 export class HomeComponent {
 

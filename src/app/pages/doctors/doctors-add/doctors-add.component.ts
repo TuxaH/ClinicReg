@@ -5,8 +5,7 @@ import {ModalWindowService} from '../../../shared/services/modal-window.service'
 
 @Component({
   selector: 'app-doctors-add',
-  templateUrl: './doctors-add.component.html',
-  styleUrls: ['./doctors-add.component.css']
+  templateUrl: './doctors-add.component.html'
 })
 export class DoctorsAddComponent implements OnInit {
 
