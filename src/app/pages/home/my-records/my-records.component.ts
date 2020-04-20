@@ -11,6 +11,8 @@ export class MyRecordsComponent implements OnInit {
 
   name: string = '';
 
+  i: number = 0;
+
   constructor(public doctorsService: DoctorsService,
               public modalWindowService: ModalWindowService) {}
 

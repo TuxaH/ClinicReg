@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DoctorsService} from '../../../shared/services/doctors.service';
 import {PositionsService} from '../../../shared/services/positions.service';
 import {ModalWindowService} from '../../../shared/services/modal-window.service';
+import {strict} from 'assert';
 
 @Component({
   selector: 'app-doctors-add',
