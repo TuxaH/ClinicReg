@@ -11,6 +11,8 @@ import {UsersService} from '../../shared/services/users.service';
 })
 export class LoginComponent implements OnInit {
 
+  title: string = 'app';
+
   login: string = '';
   password: string = '';
 
@@ -42,7 +44,8 @@ export class LoginComponent implements OnInit {
         nameLast: this.nameLastReg,
         login: this.loginReg,
         password: this.passwordReg,
-        type: 'user'};
+        type: 'user'
+      };
 
       for (let prop in this.usersService.users) {
         if (prop === this.loginReg)

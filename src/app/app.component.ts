@@ -4,4 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `<app-navigation></app-navigation>`
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'ClinicReg'
+}
